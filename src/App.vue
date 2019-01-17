@@ -1,17 +1,19 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ListOfItems style="width: 400px"/>
+    <MainPage style="width: calc(100% - 400px);"></MainPage>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ListOfItems from './components/ListOfItems.vue'
+import MainPage from "@/components/MainPage";
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    MainPage,
+    ListOfItems
   }
 }
 </script>
@@ -24,5 +26,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+  display: flex;
+  justify-content: flex-start;  /* равномерное распределение дочерних элементов */
+  align-items: flex-start;
+  flex-direction: row ;
 }
 </style>
