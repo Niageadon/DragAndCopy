@@ -1,49 +1,64 @@
 <template>
-  <div class="ListOfItems">
-    <ul class="List">
-      <li class="Item" v-for="item in Items">
-        {{item}}
-        <img src="../assets/logo.png">
-        <h3> Some text </h3>
-      </li>
+  <div class="ListOfItems drag">
 
-    </ul>
+<drag  :list="someData.list" class="dragArea">
+
+          <div style="color: azure"  v-for="element in someData.list"  v-bind:key="element.name" > 1212 {{ element.name}}   </div>
+
+</drag>
+
   </div>
 </template>
 
 <script>
+import draggable from 'vuedraggable'
+
 export default {
+    component: {
+        drag: draggable
+    },
+
   name: 'ListOfItems',
-          props: {
+  props: {
     msg: String
   },
 
   data: function()
   {
     return{
-      Items:[
-        '1',
-        '2',
-        '3'
-      ],
+      someData: {
+        id:[1, 2, 3, 4],
+        list:[
+          {name:"John"},
+          {name:"George"},
+          {name:"Paul"},
+          {name:"Ringo"} ]
+      }
     }
-  }
+  },
 }
 
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+  .dragArea {
+    min-height: 10px;
+  }
+
   ul{
     list-style-type: none;
     padding-left: 0;
-    margin: 10px 0 0 0;
+    margin: 0 0 0 0;
   }
   li{
     display: flex;
     justify-content: flex-start;  /* равномерное распределение дочерних элементов */
     align-items: center;
     flex-direction: column;
+    margin-top: 10px;
+    color: azure;
   }
   img{
     height: 300px;
@@ -54,7 +69,7 @@ export default {
   }
 
   .ListOfItems{
-    background-color: aqua;
+    background-color: #000000;
   }
 
   .List{
@@ -76,7 +91,7 @@ export default {
 
   .Item{
     width: 90%;
-    height: 500px;
+    height: 50px;
     background-color: black;
     align-self: auto;
     margin-top: 10px;

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <ListOfItems style="width: 400px"/>
+    <ListOfItem style="width: 400px"/>
     <MainPage style="width: calc(100% - 400px);"></MainPage>
   </div>
 </template>
@@ -13,7 +13,7 @@ export default {
   name: 'app',
   components: {
     MainPage,
-    ListOfItems
+    ListOfItem: ListOfItems
   }
 }
 </script>
