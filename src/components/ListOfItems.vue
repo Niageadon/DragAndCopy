@@ -1,11 +1,15 @@
 <template>
   <div class="ListOfItems drag">
 
-<drag  :list="someData.list" class="dragArea">
+    <draggable v-model="list" class="dragArea" :options="{group:'people'}">
+      <div  v-for="element in list"   >{{element.name}}   </div>
+    </draggable>
+    <hr>
+    <draggable v-model="list1" class="dragArea" :options="{group:'people'}"  >
+      <div  v-for="element in list1">{{element.name}}   </div>
+    </draggable>
+    <hr>
 
-          <div style="color: azure"  v-for="element in someData.list"  v-bind:key="element.name" > 1212 {{ element.name}}   </div>
-
-</drag>
 
   </div>
 </template>
@@ -14,8 +18,8 @@
 import draggable from 'vuedraggable'
 
 export default {
-    component: {
-        drag: draggable
+    components: {
+        draggable: draggable
     },
 
   name: 'ListOfItems',
@@ -26,16 +30,47 @@ export default {
   data: function()
   {
     return{
-      someData: {
-        id:[1, 2, 3, 4],
+
         list:[
+          {name:"JOJO"},
+          {name:"FFDD"},
+          {name:"RRRR"},
+          {name:"EEWS"} ],
+
+
+        list1:[
           {name:"John"},
           {name:"George"},
           {name:"Paul"},
-          {name:"Ringo"} ]
-      }
+          {name:"Ringo"} ],
+
+      getOptions(place) {
+        let option = {
+            sort: true,
+            animation: 0,
+            group:{
+              name:'tags',
+              pull: place.cloneable? 'clone' : true,
+              put:  place.droppable
+            },
+            disabled: !place.editable,
+            ghostClass: 'ghost'
+          }
+        console.log('option');
+        return  option;
+      },
+      isDragging: false,
+      delayedDragging:false
     }
   },
+  methods: {
+    onMove ({relatedContext, draggedContext}) {
+      console.log('move');
+      const relatedElement = relatedContext.element;
+      const draggedElement = draggedContext.element;
+      return (!relatedElement || !relatedElement.fixed) && !draggedElement.fixed
+    },
+  }
 }
 
 </script>
