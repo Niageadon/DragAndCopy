@@ -1,15 +1,24 @@
 <template>
-  <div class="ListOfItems drag">
+  <div>
 
     <draggable v-model="list" class="dragArea" :options="{group:'people'}">
-      <div  v-for="element in list"   >{{element.name}}   </div>
+      <div  v-for="element in list" :key="element"   >{{element.name}}   </div>
     </draggable>
     <hr>
     <draggable v-model="list1" class="dragArea" :options="{group:'people'}"  >
-      <div  v-for="element in list1">{{element.name}}   </div>
+      <div  v-for="element in list1" :key="element">{{element.name}}   </div>
     </draggable>
     <hr>
 
+    <draggable v-model="listItems" :options="{group:'Items'}">
+      <div class="containerForItem" v-for="(Item, Index) in listItems" :key="Item">
+        <img :src="Item.src">
+        <div>
+        {{Item.name}} {{Index}}
+        </div>
+      </div>
+
+    </draggable>
 
   </div>
 </template>
@@ -31,34 +40,26 @@ export default {
   {
     return{
 
-        list:[
-          {name:"JOJO"},
-          {name:"FFDD"},
-          {name:"RRRR"},
-          {name:"EEWS"} ],
+      list:[
+        {name:"JOJO"},
+        {name:"FFDD"},
+        {name:"RRRR"},
+        {name:"EEWS"} ],
 
 
-        list1:[
-          {name:"John"},
-          {name:"George"},
-          {name:"Paul"},
-          {name:"Ringo"} ],
+      list1:[
+        {name:"John"},
+        {name:"George"},
+        {name:"Paul"},
+        {name:"Ringo"} ],
 
-      getOptions(place) {
-        let option = {
-            sort: true,
-            animation: 0,
-            group:{
-              name:'tags',
-              pull: place.cloneable? 'clone' : true,
-              put:  place.droppable
-            },
-            disabled: !place.editable,
-            ghostClass: 'ghost'
-          }
-        console.log('option');
-        return  option;
-      },
+      listItems:[
+        {name: 'device 1', src: require('../assets/1.png'), width: 10, height: 20},
+        {name: 'device 2', src: require('../assets/2.jpg'), width: 15, height: 30},
+      ],
+
+
+
       isDragging: false,
       delayedDragging:false
     }
@@ -70,7 +71,26 @@ export default {
       const draggedElement = draggedContext.element;
       return (!relatedElement || !relatedElement.fixed) && !draggedElement.fixed
     },
-  }
+
+    getOptions(place) {
+      let option = {
+        sort: true,
+        animation: 0,
+        group:{
+          name:'tags',
+          pull: place.cloneable? 'clone' : true,
+          put:  place.droppable
+        },
+        disabled: !place.editable,
+        ghostClass: 'ghost'
+      }
+      console.log('option');
+      return  option;
+    },
+
+
+  },
+
 }
 
 </script>
@@ -103,9 +123,7 @@ export default {
     width: 80%;
   }
 
-  .ListOfItems{
-    background-color: #000000;
-  }
+
 
   .List{
     width: 100%;
@@ -123,11 +141,18 @@ export default {
     height: 500px;
 
   }
+  .containerForItem{
+    width: 90%;
+    height: auto;
+    background-color: aquamarine;
+    margin-top: 15px;
+    min-height: 30px;
+  }
 
   .Item{
     width: 90%;
-    height: 50px;
-    background-color: black;
+    height: auto;
+    background-color: #d6d6d6;
     align-self: auto;
     margin-top: 10px;
   }
