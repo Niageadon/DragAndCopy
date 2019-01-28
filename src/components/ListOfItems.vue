@@ -1,23 +1,35 @@
 <template>
-  <div>
 
-    <draggable v-model="list" class="dragArea" :options="{group:'people'}">
-      <div  v-for="element in list" :key="element"   >{{element.name}}   </div>
-    </draggable>
+
+  <div>
+<h1>First component</h1>
+
+    <v-flex align-start justify-center column fill-height ml-3>
+    <v-switch ma-1
+        :label="`Dragging`"
+        :color="'green'"
+        v-model="enableDragging"
+    ></v-switch>
+    <v-switch ma-1
+        :label="`Copying`"
+        :color="'blue'"
+        v-model="enableCopy"
+    ></v-switch>
+    </v-flex>
+
     <hr>
     <draggable v-model="list1" class="dragArea" :options="{group:'people'}"  >
-      <div  v-for="element in list1" :key="element">{{element.name}}   </div>
+      <div  v-for="(elements, index) in list1" :key="index">{{elements.name}}   </div>
     </draggable>
     <hr>
 
-    <draggable v-model="listItems" :options="{group:'Items'}">
-      <div class="containerForItem" v-for="(Item, Index) in listItems" :key="Item">
+    <draggable v-model="listItems" :options="draggableOption('Items')">
+      <div class="containerForItem" v-for="(Item, Index) in listItems" :key="Index">
         <img :src="Item.src">
         <div>
         {{Item.name}} {{Index}}
         </div>
       </div>
-
     </draggable>
 
   </div>
@@ -58,35 +70,27 @@ export default {
         {name: 'device 2', src: require('../assets/2.jpg'), width: 15, height: 30},
       ],
 
-
-
+      enableCopy: false,
+      enableDragging: true,
       isDragging: false,
       delayedDragging:false
     }
   },
   methods: {
-    onMove ({relatedContext, draggedContext}) {
-      console.log('move');
-      const relatedElement = relatedContext.element;
-      const draggedElement = draggedContext.element;
-      return (!relatedElement || !relatedElement.fixed) && !draggedElement.fixed
-    },
 
-    getOptions(place) {
-      let option = {
+
+    draggableOption(groopName){
+      //let option =
+      return{
         sort: true,
-        animation: 0,
         group:{
-          name:'tags',
-          pull: place.cloneable? 'clone' : true,
-          put:  place.droppable
+          name: groopName,
+          pull: this.enableCopy? 'clone' : true,
+          put: true
         },
-        disabled: !place.editable,
-        ghostClass: 'ghost'
+        //animation: 300
       }
-      console.log('option');
-      return  option;
-    },
+    }
 
 
   },
