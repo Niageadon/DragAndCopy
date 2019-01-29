@@ -1,25 +1,28 @@
 <template>
 <div>
-  <v-navigation-drawer>
+
 <h1>First component</h1>
 
     <v-container>
     <v-flex align-start justify-center column fill-height ml-3>
-    <v-switch ma-1
+    <v-switch py-1
         :label="`Dragging`"
         :color="'green'"
         v-model="enableDragging"
     ></v-switch>
-    <v-switch ma-1
-        :label="`Copying`"
-        :color="'blue'"
-        v-model="enableCopy"
-    ></v-switch>
     </v-flex>
     </v-container>
 
+    <v-flex xs12 sm6 d-flex>
+      <v-select
+          :items="items"
+          label="Outline style"
+          outline
+      ></v-select>
+    </v-flex>
+
     <hr>
-    <draggable v-model="list1" class="dragArea" :options="{group:'people'}"  >
+    <draggable v-model="list1" :options="{group:'people'}"  >
       <div  v-for="(elements, index) in list1" :key="index">{{elements.name}}   </div>
     </draggable>
     <hr>
@@ -33,7 +36,6 @@
       </div>
     </draggable>
 
-  </v-navigation-drawer>
   </div>
 </template>
 
@@ -53,6 +55,7 @@ export default {
   data: function()
   {
     return{
+      items: ['Foo', 'Bar', 'Fizz', 'Buzz'],
 
       list:[
         {name:"JOJO"},
@@ -87,8 +90,8 @@ export default {
         sort: true,
         group:{
           name: groopName,
-          pull: this.enableCopy? 'clone' : true,
-          put: true
+          pull:  'clone',
+          put: this.enableDragging? true: false
         },
         //animation: 300
       }
@@ -163,8 +166,5 @@ export default {
     margin-top: 10px;
   }
 
-  .ItemDescription{
-
-  }
 
 </style>

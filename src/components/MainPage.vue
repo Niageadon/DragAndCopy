@@ -1,32 +1,12 @@
 <template>
     <div class="Panel">
 
-
         <h1>Second component</h1>
-        <div id="selector's box" style="margin-left: 5%">
-        <v-switch
-            :label="`Dragging`"
-            :color="'green'"
-            v-model="enableDragging"
-        ></v-switch>
 
-        <v-switch
-            :label="`Copying`"
-            :color="'blue'"
-            v-model="enableCopy"
-        ></v-switch>
-        </div>
 
         <h2>List 1 Draggable</h2>
         <draggable v-model="list" class="dragArea" :options="{group:'people'}">
             <div v-for="(element, Index) in list" :key="Index">{{element.name}} </div>
-        </draggable>
-
-        <h2>List 2 Draggable</h2>
-        <draggable v-model="list1" class="dragArea" :options="{group:'people'}">
-            <!--<div v-for="element in list1">{{element.name}}</div>-->
-            <div >Paul </div>
-            <div > Ringo</div>
         </draggable>
 
         <h1> Draggable IMG's </h1>
@@ -117,7 +97,7 @@
         height: 100px;
         width: 100px;
         background-image: url("../assets/1.png");
-    }.
+    }
          box1{
         height: 100px;
         width: 100px;

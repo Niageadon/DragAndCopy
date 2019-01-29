@@ -1,8 +1,13 @@
 <template>
-  <div id="app">
+  <div>
+    <v-app>
+      <v-layout justify-start fill-height>
 
-    <ListOfItem style="width: 400px"/>
-    <MainPage style="width: calc(100% - 400px);"></MainPage>
+        <ListOfItem style="width: 400px"/>
+        <MainPage style="width: calc(100% - 400px);"/>
+
+      </v-layout>
+    </v-app>
   </div>
 </template>
 
