@@ -28,4 +28,6 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-https://medium.com/@john.pickett/vue-draggable-drop-and-drop-sorting-for-vue-js-100222dcff65
+https://tender-banach-dcb3b5.netlify.com/
+
+//https://medium.com/@john.pickett/vue-draggable-drop-and-drop-sorting-for-vue-js-100222dcff65
