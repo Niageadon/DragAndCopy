@@ -1,72 +1,38 @@
 <template>
-  <div>
-    <v-app>
-      <v-layout justify-start fill-height>
+  <v-app>
+    <v-toolbar app>
+      <v-toolbar-title class="headline text-uppercase">
+        <span>Vuetify</span>
+        <span class="font-weight-light">MATERIAL DESIGN</span>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn
+        flat
+        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        target="_blank"
+      >
+        <span class="mr-2">Latest Release</span>
+      </v-btn>
+    </v-toolbar>
 
-        <ListOfItem style="width: 400px"/>
-        <MainPage style="width: calc(100% - 400px);"/>
-
-      </v-layout>
-    </v-app>
-  </div>
+    <v-content>
+      <HelloWorld/>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-import ListOfItems from './components/ListOfItems.vue'
-import MainPage from "@/components/MainPage";
+import HelloWorld from './components/HelloWorld'
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
-    MainPage,
-    ListOfItem: ListOfItems
+    HelloWorld
   },
-  data(){
-    return{
-      darkThemeOn: true,
-      drawer: true
+  data () {
+    return {
+      //
     }
   }
 }
 </script>
-
-<style>
-  i.v-icon.material-icons.theme--light {
-    border-color: rgba(60,60,60,.5);
-    border-style: solid;
-    border-width: 3px 3px 0 0;
-    content: "";
-    display: inline-block;
-    height: 10px;
-    width: 10px;
-    vertical-align: text-top;
-    transform: rotate(133deg);
-    box-sizing: inherit;
-  }
-
-  i.v-icon.material-icons.theme--light.primary--text {
-    border-color: rgba(60,60,60,.5);
-    border-style: solid;
-    border-width: 3px 3px 0 0;
-    content: "";
-    display: inline-block;
-    height: 10px;
-    width: 10px;
-    vertical-align: text-top;
-    transform: rotate(315deg);
-    box-sizing: inherit;
-  }
-  
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-  display: flex;
-  justify-content: flex-start;  /* равномерное распределение дочерних элементов */
-  align-items: flex-start;
-  flex-direction: row ;
-}
-</style>
