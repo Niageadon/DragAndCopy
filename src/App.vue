@@ -16,18 +16,23 @@
     </v-toolbar>
 
     <v-content>
-      <HelloWorld/>
+      <v-layout justify-start fill-height>
+      <ListOfItems/>
+      <MainPage></MainPage>
+      </v-layout>
     </v-content>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import ListOfItems from "./components/ListOfItems";
+import MainPage from "./components/MainPage";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    MainPage,
+    ListOfItems,
   },
   data () {
     return {

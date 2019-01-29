@@ -15,6 +15,7 @@
 
     <v-flex xs12 sm6 d-flex>
       <v-select
+
           :items="items"
           label="Outline style"
           outline
