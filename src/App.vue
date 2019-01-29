@@ -31,6 +31,32 @@ export default {
 </script>
 
 <style>
+  i.v-icon.material-icons.theme--light {
+    border-color: rgba(60,60,60,.5);
+    border-style: solid;
+    border-width: 3px 3px 0 0;
+    content: "";
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    vertical-align: text-top;
+    transform: rotate(133deg);
+    box-sizing: inherit;
+  }
+
+  i.v-icon.material-icons.theme--light.primary--text {
+    border-color: rgba(60,60,60,.5);
+    border-style: solid;
+    border-width: 3px 3px 0 0;
+    content: "";
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    vertical-align: text-top;
+    transform: rotate(315deg);
+    box-sizing: inherit;
+  }
+  
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
