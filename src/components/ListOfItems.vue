@@ -1,9 +1,9 @@
 <template>
-
-
-  <div>
+<div>
+  <v-navigation-drawer>
 <h1>First component</h1>
 
+    <v-container>
     <v-flex align-start justify-center column fill-height ml-3>
     <v-switch ma-1
         :label="`Dragging`"
@@ -16,6 +16,7 @@
         v-model="enableCopy"
     ></v-switch>
     </v-flex>
+    </v-container>
 
     <hr>
     <draggable v-model="list1" class="dragArea" :options="{group:'people'}"  >
@@ -32,6 +33,7 @@
       </div>
     </draggable>
 
+  </v-navigation-drawer>
   </div>
 </template>
 
