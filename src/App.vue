@@ -17,8 +17,8 @@
 
     <v-content>
       <v-layout justify-start fill-height>
-      <ListOfItems/>
-      <MainPage></MainPage>
+      <ListOfItems />
+      <MainPage style="height: 3000px;"></MainPage>
       </v-layout>
     </v-content>
   </v-app>

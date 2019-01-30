@@ -1,6 +1,6 @@
 <template>
-<div>
-
+<div style="height: 900px">
+<v-navigation-drawer  hide-overlay class="fixed">
 <h1>First component</h1>
 
     <v-container>
@@ -37,6 +37,7 @@
       </div>
     </draggable>
 
+</v-navigation-drawer>
   </div>
 </template>
 
@@ -167,6 +168,9 @@ export default {
     background-color: #d6d6d6;
     align-self: auto;
     margin-top: 10px;
+  }
+  .fixed {
+    position: fixed;
   }
 
 
