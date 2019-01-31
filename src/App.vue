@@ -1,11 +1,13 @@
 <template>
   <v-app>
-      <v-layout justify-start>
-        <ToolBar/>
-        <ListOfItems />
+
+    <ListOfItems />
+    <ToolBar/>
+    <v-layout justify-start>
         <v-content>
-          <MainPage style="height: 3000px;"></MainPage>
-        </v-content>v
+
+        <MainPage style="height: 3000px;"></MainPage>
+       </v-content>v
       </v-layout>
   </v-app>
 </template>

@@ -1,6 +1,6 @@
 <template>
-<div style="height: 900px">
-<v-navigation-drawer  hide-overlay class="fixed">
+<div>
+<v-navigation-drawer fixed clipped app hide-overlay>
 <h1>First component</h1>
 
     <v-container>
@@ -94,7 +94,7 @@ export default {
           pull:  'clone',
           put: this.enableDragging? true: false
         },
-        //animation: 300
+        animation: 300
       }
     }
 
@@ -167,9 +167,6 @@ export default {
     background-color: #d6d6d6;
     align-self: auto;
     margin-top: 10px;
-  }
-  .fixed {
-    position: fixed;
   }
 
 

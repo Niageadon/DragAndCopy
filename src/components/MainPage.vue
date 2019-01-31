@@ -1,9 +1,12 @@
 <template>
     <div class="Panel">
+        <v-switch pl-2
+                  :label="`Enable `"
+                  :color="'green'"
+                  v-model="enablePut"
+        ></v-switch>
 
         <h1>Second component</h1>
-
-
         <h2>List 1 Draggable</h2>
         <draggable v-model="list" class="dragArea" :options="{group:'people'}">
             <div v-for="(element, Index) in list" :key="Index">{{element.name}} </div>
@@ -48,8 +51,7 @@
                     {name: 'device 2', src: require('../assets/2.jpg'), width: 15, height: 30},
                 ],
 
-                enableCopy: false,
-                enableDragging: true,
+                enablePut: true,
             }
         },
 
@@ -66,10 +68,10 @@
                         sort: true,
                     group:{
                         name: groopName,
-                        pull: this.enableCopy? 'clone' : true,
-                        put: true
+                        pull: false,
+                        put: this.enablePut
                     },
-                    //animation: 300
+                    animation: 400
                 }
             }
         },
