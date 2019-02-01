@@ -1,5 +1,6 @@
 <template>
     <div class="Panel">
+
         <v-switch pl-2
                   :label="`Enable `"
                   :color="'green'"

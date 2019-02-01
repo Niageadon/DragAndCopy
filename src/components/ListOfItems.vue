@@ -1,6 +1,8 @@
 <template>
 <div>
+
 <v-navigation-drawer fixed clipped app hide-overlay>
+
 <h1>First component</h1>
 
     <v-container>
@@ -12,6 +14,8 @@
     ></v-switch>
     </v-flex>
     </v-container>
+
+
 
     <v-flex xs12 sm6 d-flex>
       <v-select
@@ -37,15 +41,18 @@
     </draggable>
 
 </v-navigation-drawer>
+
   </div>
 </template>
 
 <script>
 import draggable from 'vuedraggable'
 
+
 export default {
     components: {
-        draggable: draggable
+      draggable: draggable,
+
     },
 
   name: 'ListOfItems',
@@ -73,6 +80,9 @@ export default {
 
       listItems:[
         {name: 'device 1', src: require('../assets/1.png'), width: 10, height: 20},
+        {name: 'device 2', src: require('../assets/2.jpg'), width: 15, height: 30},
+        {name: 'device 2', src: require('../assets/2.jpg'), width: 15, height: 30},
+        {name: 'device 2', src: require('../assets/2.jpg'), width: 15, height: 30},
         {name: 'device 2', src: require('../assets/2.jpg'), width: 15, height: 30},
       ],
 
@@ -161,13 +171,7 @@ export default {
     min-height: 30px;
   }
 
-  .Item{
-    width: 90%;
-    height: auto;
-    background-color: #d6d6d6;
-    align-self: auto;
-    margin-top: 10px;
-  }
+
 
 
 </style>
