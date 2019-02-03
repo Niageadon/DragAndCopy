@@ -1,54 +1,37 @@
 <template>
- <!-- <v-app>
+  <v-app>
 
-    <ListOfItems />
+    <ListOfItems/>
     <ToolBar/>
 
     <v-layout justify-start>
       <v-content>
-        <MainPage style="height: 3000px;"></MainPage>
+        <MainPage></MainPage>
       </v-content>
       </v-layout>
-  </v-app>-->
-
-<div class="hide-scroll viewport">
-    <ListOfItems />
-  <div class="hide-scroll">
-
-    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque, fugit inventore nihil odio quidem quis
-      ratione reiciendis sequi vitae! Cum deserunt dignissimos doloremque enim impedit nemo obcaecati officiis quos
-      similique?
-    </div>
-    <div>Neque nihil nobis numquam odio placeat quisquam voluptates. Ab aut debitis dicta, doloribus, ea expedita fugit
-      harum laborum sequi soluta tempora temporibus, voluptates! Corporis eius laborum quos ullam voluptas voluptatem.
-    </div>
-    <div>Aliquam explicabo magnam quaerat quidem. A accusamus amet dolor illo impedit ipsum, itaque magni nisi, omnis
-      quibusdam sint temporibus unde voluptatem! Facilis itaque natus non provident quas quo, sunt voluptatum!
-    </div>
-    <div>Ab accusamus amet asperiores atque aut cupiditate distinctio dolorem esse est eveniet facilis fuga harum illum
-      iste itaque iusto modi molestiae non nostrum obcaecati, quaerat quia quod tempore velit vero.
-    </div>
-
-  </div>
-</div>
 
 
-
+  </v-app>
 </template>
 
 <script>
 import ListOfItems from "./components/ListOfItems";
 import MainPage from "./components/MainPage";
 import ToolBar from "@/components/Item/ToolBar";
+import Item from "./components/Item/Item";
+//import Simplebar from 'simplebar-vue';
+//import 'simplebar/dist/simplebar.min.css';
 //import VBar from "v-bar";
 
 
 export default {
   name: 'App',
   components: {
+    Item,
     ToolBar,
     MainPage,
     ListOfItems,
+    //Simplebar
 
   },
   data () {
@@ -61,9 +44,8 @@ export default {
 
 
 <style>
-  .hide-scroll {
-    overflow: auto;
-    width: 200px  ;
+  .scroll {
+   width: 200px  ;
     height: 100px;
   }
 

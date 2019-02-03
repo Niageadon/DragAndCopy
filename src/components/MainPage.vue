@@ -1,5 +1,5 @@
 <template>
-    <div class="Panel">
+    <div>
 
         <v-switch pl-2
                   :label="`Enable `"
@@ -9,12 +9,12 @@
 
         <h1>Second component</h1>
         <h2>List 1 Draggable</h2>
-        <draggable v-model="list" class="dragArea" :options="{group:'people'}">
+        <draggable v-model="list" class="dragArea" :options="{group:'Text'}">
             <div v-for="(element, Index) in list" :key="Index">{{element.name}} </div>
         </draggable>
 
         <h1> Draggable IMG's </h1>
-        <draggable v-model="listItems" class="dragArea" :options="draggableOption('Items')">
+        <draggable v-model="listItems" class="dragArea" :options="draggableOption('Images')">
             <img :src="listItems[0].src">
             <img :src="listItems[1].src">
         </draggable>
@@ -93,7 +93,7 @@
     .Panel{
         width: 100%;
         height: 800px;
-        background-color: #87798b;
+        background-color: #ead2f1;
     }
 
     .box{

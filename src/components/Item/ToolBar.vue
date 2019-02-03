@@ -7,8 +7,8 @@
 
     >
       <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
+        <span>Vuetify + </span>
+        <span class="font-weight-light">Vue.Draggable</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
