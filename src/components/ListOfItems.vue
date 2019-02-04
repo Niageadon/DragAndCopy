@@ -2,7 +2,9 @@
 <div>
   //cont -> flex
 
-<v-navigation-drawer fixed clipped app >
+<v-navigation-drawer fixed clipped app
+v-model="EventBus"
+>
 
   <v-container style="padding: 12px">
     <h1>First component</h1>
@@ -109,10 +111,18 @@ import draggable from 'vuedraggable'
 import Simplebar from 'simplebar-vue';
 import 'simplebar/dist/simplebar.min.css';
 
+import { EventBus } from '../bus.js';
+
+// Listen for the i-got-clicked event and its payload.
+EventBus.$on('boba', clickCount => {
+  console.log(`Oh, that's nice. It's gotten ${clickCount} clicks! :)`)
+});
+
 export default {
     components: {
       draggable: draggable,
-      Simplebar
+      Simplebar,
+      EventBus
     },
 
   name: 'ListOfItems',
@@ -126,10 +136,49 @@ export default {
       typesOfData: ['Text', 'Images', 'Text and Images'],
 
       listOfText:[
-        {name:"John"},
-        {name:"George"},
-        {name:"Paul"},
-        {name:"Ringo"} ],
+        {name:"Abam"},
+        {name:"Aduke"},
+        {name:"Baako"},
+        {name:"Boba"},
+        {name:"Bobo"},
+        {name:"Biba"},
+        {name:"Chaonaine"},
+        {name:"Chinelo"},
+        {name:"Dada"},
+        {name:"Dawud"},
+        {name:"Dumaka"},
+        {name:"Ebun"},
+        {name:"Fabayo"},
+        {name:"Folade"},
+        {name:"Foluke"},
+        {name:"Gamba"},
+        {name:"Hasanati"},
+        {name:"Hondo"},
+        {name:"Ibrahim"},
+        {name:"Japera"},
+        {name:"Jojo"},
+        {name:"Kosoko"},
+        {name:"Kukua"},
+        {name:"Lateefa"},
+        {name:"Lutalo"},
+        {name:"Mama"},
+        {name:"Monifa"},
+        {name:"Njemile"},
+        {name:"Obayana"},
+        {name:"Pasua"},
+        {name:"Ranako"},
+        {name:"Rehema"},
+        {name:"Salihah"},
+        {name:"Sekelaga"},
+        {name:"Sisi"},
+        {name:"Teleza"},
+        {name:"Tulinagwe"},
+        {name:"Uchenna"},
+        {name:"Walidah"},
+        {name:"Yazid"},
+        {name:"Zainabu"},
+        {name:"Zuberi"},
+        ],
 
       listOfImages:[
         {name: 'letter-a', src: require('../assets/alphavite/letter-a.png')},
@@ -188,7 +237,7 @@ export default {
         {name: 'kote', src: require('../assets/1.png')},
       ],
 
-      tempList:[ ],
+      tempList:[],
 
       enableCopy: false,
       enableDragging: true,

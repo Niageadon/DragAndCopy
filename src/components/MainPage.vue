@@ -1,24 +1,25 @@
 <template>
     <div>
+        <v-container align-content-start>
+            <h1>First component</h1>
+            <v-switch pl-2
+                      :label="`Enable `"
+                      :color="'green'"
+                      v-model="enablePut"
+            ></v-switch>
 
-        <v-switch pl-2
-                  :label="`Enable `"
-                  :color="'green'"
-                  v-model="enablePut"
-        ></v-switch>
+            <h1>Second component</h1>
+            <h2>List 1 Draggable</h2>
+            <draggable v-model="list" class="dragArea" :options="{group:'Text'}">
+                <div v-for="(element, Index) in list" :key="Index">{{element.name}} </div>
+            </draggable>
 
-        <h1>Second component</h1>
-        <h2>List 1 Draggable</h2>
-        <draggable v-model="list" class="dragArea" :options="{group:'Text'}">
-            <div v-for="(element, Index) in list" :key="Index">{{element.name}} </div>
-        </draggable>
-
-        <h1> Draggable IMG's </h1>
-        <draggable v-model="listItems" class="dragArea" :options="draggableOption('Images')">
-            <img :src="listItems[0].src">
-            <img :src="listItems[1].src">
-        </draggable>
-
+            <h1> Draggable IMG's </h1>
+            <draggable v-model="listItems" class="dragArea" :options="draggableOption('Images')">
+                <img :src="listItems[0].src">
+                <img :src="listItems[1].src">
+            </draggable>
+        </v-container>
     </div>
 </template>
 

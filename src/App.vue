@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app >
 
     <ListOfItems/>
     <ToolBar/>
@@ -18,7 +18,6 @@
 import ListOfItems from "./components/ListOfItems";
 import MainPage from "./components/MainPage";
 import ToolBar from "@/components/Item/ToolBar";
-import Item from "./components/Item/Item";
 //import Simplebar from 'simplebar-vue';
 //import 'simplebar/dist/simplebar.min.css';
 //import VBar from "v-bar";
@@ -27,7 +26,6 @@ import Item from "./components/Item/Item";
 export default {
   name: 'App',
   components: {
-    Item,
     ToolBar,
     MainPage,
     ListOfItems,
