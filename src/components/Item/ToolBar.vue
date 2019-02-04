@@ -4,7 +4,6 @@
         app
         fixed
         clipped-left
-
     >
       <v-toolbar-title class="headline text-uppercase">
         <span>Vuetify + </span>
