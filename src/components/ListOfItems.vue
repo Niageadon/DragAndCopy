@@ -3,7 +3,7 @@
   //cont -> flex
 
 <v-navigation-drawer fixed clipped app
-v-model="EventBus"
+v-model="drawer"
 >
 
   <v-container style="padding: 12px">
@@ -28,7 +28,7 @@ v-model="EventBus"
     <v-flex xs12 d-flex>
         <v-select
             :items="typesOfData"
-            label="Outline style"
+            label="Data types:"
             outline
             v-model="selectedItemGroup"
         ></v-select>
@@ -39,44 +39,6 @@ v-model="EventBus"
     <Simplebar class="ListOfItems">
       <v-container grid-list-md >
         <v-layout align-start justify-center row fill-height>
-
-                        <!--<v-flex is="draggable"
-                            v-for="item in 10" :key="item" offset-xs1 xs2 sm5 md3>
-
-                          <v-card
-                          >
-                            test
-                          </v-card>
-                        </v-flex>-->
-<!--
-            <draggable
-                v-if="selectedItemGroup === 'Text'"
-                v-model="listOfText"
-                :options="draggableOption('Text')">
-              <div v-for="(elements, index) in listOfText" :key="index">{{elements.name}}</div>
-            </draggable>
-
-            <draggable
-                v-if="selectedItemGroup === 'Images'"
-                v-model="listOfImages"
-                :options="draggableOption('Images')">
-              <div class="containerForItem" v-for="(Image, index) in listOfImages" :key="index">
-                <img :src="Image.src">
-              </div>
-            </draggable>-->
-
-           <!-- <draggable
-                v-if="selectedItemGroup === 'Text and Images'"
-                v-model="listOfTextAndImages"
-                :options="draggableOption('textAndImages')">
-              <div class="containerForItem" v-for="(Item, Index) in listOfTextAndImages" :key="Index">
-                <img :src="Item.src">
-                <div>
-                {{Item.name}} {{Index}}
-                </div>
-              </div>
-            </draggable>-->
-
 
             <draggable
             class="containerForItems"
@@ -114,15 +76,13 @@ import 'simplebar/dist/simplebar.min.css';
 import { EventBus } from '../bus.js';
 
 // Listen for the i-got-clicked event and its payload.
-EventBus.$on('boba', clickCount => {
-  console.log(`Oh, that's nice. It's gotten ${clickCount} clicks! :)`)
-});
+
 
 export default {
     components: {
       draggable: draggable,
       Simplebar,
-      EventBus
+
     },
 
   name: 'ListOfItems',
@@ -130,9 +90,20 @@ export default {
     msg: String
   },
 
+  created(){
+    EventBus.$on('boba', data => {
+      //console.log(`Oh, that's nice. It's gotten ${data} clicks! :)`);
+      this.drawer = data//clickCount;
+    });
+  },
+
   data: function()
   {
     return{
+      drawer: true,
+
+      //test: EventBus.$on('boba', this.drawer),
+
       typesOfData: ['Text', 'Images', 'Text and Images'],
 
       listOfText:[
@@ -249,7 +220,9 @@ export default {
   },
   methods: {
 
-
+    testFun(a){
+      this.test = a;
+    },
     /*draggableOption(groupName){
       //let option =
       return{
@@ -319,7 +292,7 @@ export default {
   }
 
   .ListOfItems{
-    height: 470px;
+    height: 30vw;
   }
 
   .containerForItems{

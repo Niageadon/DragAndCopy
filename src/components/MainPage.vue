@@ -1,18 +1,21 @@
 <template>
     <div>
-        <v-container align-content-start>
-            <h1>First component</h1>
+        <v-container align-content-space-between>
             <v-switch pl-2
-                      :label="`Enable `"
+                      :label="`Enable Put`"
                       :color="'green'"
                       v-model="enablePut"
             ></v-switch>
 
-            <h1>Second component</h1>
-            <h2>List 1 Draggable</h2>
-            <draggable v-model="list" class="dragArea" :options="{group:'Text'}">
-                <div v-for="(element, Index) in list" :key="Index">{{element.name}} </div>
-            </draggable>
+
+            <v-container>
+                <h2>List 1 Draggable</h2>
+                <v-layout>
+                    <draggable v-model="list" class="containerForItem" :options="{group:'Text'}">
+                        <div v-for="(element, Index) in list" :key="Index">{{element.name}} </div>
+                    </draggable>
+                </v-layout>
+            </v-container>
 
             <h1> Draggable IMG's </h1>
             <draggable v-model="listItems" class="dragArea" :options="draggableOption('Images')">
@@ -115,5 +118,14 @@
         background-color: #8b537a;
      height: 100px;
      width: 100px;
+    }
+
+    .containerForItem{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: baseline;
+        width: 80%;
     }
 </style>

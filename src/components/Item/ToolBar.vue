@@ -5,7 +5,7 @@
         fixed
         clipped-left
     >
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-toolbar-side-icon @click="bus"></v-toolbar-side-icon>
 
       <v-toolbar-title class="headline text-uppercase">
         <span>Vuetify + </span>
@@ -37,10 +37,17 @@
       }
     },
 
+    methods:{
+      bus(){
+        this.drawer = !this.drawer;
+        EventBus.$emit('boba', this.drawer)
+      }
+
+    },
+
     watch: {
       drawer: function ()
       {
-        EventBus.$emit('boba', this.drawer)
       }
 
     }
