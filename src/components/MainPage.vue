@@ -1,18 +1,25 @@
 <template>
     <div>
-        <v-container align-content-space-between>
+        <v-container >
             <v-switch pl-2
                       :label="`Enable Put`"
                       :color="'green'"
                       v-model="enablePut"
             ></v-switch>
 
-
-            <v-container>
+            <v-container grid-list-md >
                 <h2>List 1 Draggable</h2>
-                <v-layout>
-                    <draggable v-model="list" class="containerForItem" :options="{group:'Text'}">
-                        <div v-for="(element, Index) in list" :key="Index">{{element.name}} </div>
+                <v-layout align-start justify-center row fill-height>
+                    <draggable v-model="listOfText" class="containerForItem" :options="{group:'Text'}">
+                        <v-flex v-for="(element, Index) in listOfText" :key="Index"
+                                xs2
+                        >
+                            <v-card>
+                                <v-card-title>
+                                {{element.name}}
+                                </v-card-title>
+                            </v-card>
+                        </v-flex>
                     </draggable>
                 </v-layout>
             </v-container>
@@ -39,7 +46,7 @@
         data: function()
         {
             return{
-                list:[
+                listOfText:[
                     {name:"JOJO"},
                     {name:"FFDD"},
                     {name:"RRRR"},
@@ -124,8 +131,8 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        justify-content: space-evenly;
+        justify-content: flex-start;
         align-items: baseline;
-        width: 80%;
+        width: 100%;
     }
 </style>

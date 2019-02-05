@@ -50,8 +50,8 @@ v-model="drawer"
                 >
 
                   <v-card >
-                    <v-img v-if="(selectedItemGroup === 'Images')     || (selectedItemGroup === 'Text and Images')" :src="Item.src">  </v-img>
-                    <v-card-text v-if="(selectedItemGroup === 'Text') || (selectedItemGroup === 'Text and Images')"> {{Item.name}} </v-card-text>
+                    <v-card-media v-if="(selectedItemGroup === 'Images')     || (selectedItemGroup === 'Text and Images')" :src="Item.src">  </v-card-media>
+                    <v-card-title v-if="(selectedItemGroup === 'Text') || (selectedItemGroup === 'Text and Images')"> {{Item.name}} </v-card-title>
                   </v-card>
                 </v-flex>
 
@@ -93,7 +93,7 @@ export default {
   created(){
     EventBus.$on('boba', data => {
       //console.log(`Oh, that's nice. It's gotten ${data} clicks! :)`);
-      this.drawer = data//clickCount;
+      this.drawer = !this.drawer//data//clickCount;
     });
   },
 
@@ -177,6 +177,7 @@ export default {
         {name: 'letter-x', src: require('../assets/alphavite/letter-x.png')},
         {name: 'letter-y', src: require('../assets/alphavite/letter-y.png')},
         {name: 'letter-z', src: require('../assets/alphavite/letter-z.png')},
+        {name: 'space', src: require('../assets/alphavite/space.png')},
       ],
 
       listOfTextAndImages:[
@@ -205,7 +206,9 @@ export default {
         {name: 'letter-x', src: require('../assets/alphavite/letter-x.png')},
         {name: 'letter-y', src: require('../assets/alphavite/letter-y.png')},
         {name: 'letter-z', src: require('../assets/alphavite/letter-z.png')},
+        {name: 'space', src: require('../assets/alphavite/space.png')},
         {name: 'kote', src: require('../assets/1.png')},
+
       ],
 
       tempList:[],
