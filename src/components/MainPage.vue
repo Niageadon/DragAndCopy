@@ -1,13 +1,16 @@
 <template>
     <div>
         <v-container style="padding-top: 0">
-            <v-switch pl-2
+
+            <v-container pa0>
+            <v-switch
                       :label="`Enable Put`"
                       :color="'green'"
                       v-model="enablePut"
             ></v-switch>
+            </v-container>
 
-            <v-container grid-list-md  class="container">
+            <v-container grid-list-md  class="container" >
                 <h2>Text area</h2>
                 <v-layout align-start justify-center row fill-height>
                     <draggable v-model="listOfText" class="containerForItem" :options="getOption('Text')">
@@ -162,7 +165,7 @@
     }
 
     .container{
-     padding-top: 0;
+        padding-top: 0;
     }
     .box{
         height: 100px;
