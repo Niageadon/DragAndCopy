@@ -47,10 +47,13 @@ v-model="drawer"
 
                 <v-flex
                     v-for="(Item, Id) in tempList" :key="Id" xs6
+                    style="max-width: 200px"
                 >
 
-                  <v-card >
-                    <v-card-media v-if="(selectedItemGroup === 'Images')     || (selectedItemGroup === 'Text and Images')" :src="Item.src">  </v-card-media>
+                  <v-card
+                    elevation="10"
+                  >
+                    <v-img v-if="(selectedItemGroup === 'Images')     || (selectedItemGroup === 'Text and Images')" :src="Item.src">  </v-img>
                     <v-card-title v-if="(selectedItemGroup === 'Text') || (selectedItemGroup === 'Text and Images')"> {{Item.name}} </v-card-title>
                   </v-card>
                 </v-flex>
@@ -93,7 +96,7 @@ export default {
   created(){
     EventBus.$on('boba', data => {
       //console.log(`Oh, that's nice. It's gotten ${data} clicks! :)`);
-      this.drawer = !this.drawer//data//clickCount;
+      this.drawer = !this.drawer//data работает некорректно, когда drawer сворачивается самостоятельно, потому не используется
     });
   },
 

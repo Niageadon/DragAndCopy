@@ -1,16 +1,16 @@
 <template>
     <div>
-        <v-container >
+        <v-container style="padding-top: 0">
             <v-switch pl-2
                       :label="`Enable Put`"
                       :color="'green'"
                       v-model="enablePut"
             ></v-switch>
 
-            <v-container grid-list-md >
-                <h2>List 1 Draggable</h2>
+            <v-container grid-list-md  class="container">
+                <h2>Text area</h2>
                 <v-layout align-start justify-center row fill-height>
-                    <draggable v-model="listOfText" class="containerForItem" :options="{group:'Text'}">
+                    <draggable v-model="listOfText" class="containerForItem" :options="getOption('Text')">
                         <v-flex v-for="(element, Index) in listOfText" :key="Index"
                                 xs2
                         >
@@ -24,11 +24,42 @@
                 </v-layout>
             </v-container>
 
-            <h1> Draggable IMG's </h1>
-            <draggable v-model="listItems" class="dragArea" :options="draggableOption('Images')">
-                <img :src="listItems[0].src">
-                <img :src="listItems[1].src">
-            </draggable>
+            <v-container grid-list-md class="container">
+                <h2>Image area</h2>
+                <v-layout align-start justify-center row fill-height>
+                    <draggable v-model="listOfImages" class="containerForItem" :options="getOption('Images')">
+                        <v-flex v-for="(element, Index) in listOfImages" :key="Index"
+                                 xs2>
+                            <v-card>
+                                <v-img
+                                    :src="element.src"
+
+                                > </v-img>
+                            </v-card>
+                        </v-flex>
+                    </draggable>
+                </v-layout>
+            </v-container>
+
+            <v-container grid-list-md class="container">
+                <h2>Image + Text area</h2>
+                <v-layout align-start justify-center row fill-height>
+                    <draggable v-model="listOfImagesAndText" class="containerForItem" :options="getOption('Text and Images')">
+                        <v-flex v-for="(element, Index) in listOfImagesAndText" :key="Index"
+                                xs2>
+                            <v-card>
+                                <v-img
+                                    :src="element.src"
+                                > </v-img>
+                                <v-card-title> {{element.name}} </v-card-title>
+                            </v-card>
+                        </v-flex>
+                    </draggable>
+                </v-layout>
+            </v-container>
+
+
+
         </v-container>
     </div>
 </template>
@@ -47,20 +78,14 @@
         {
             return{
                 listOfText:[
-                    {name:"JOJO"},
-                    {name:"FFDD"},
-                    {name:"RRRR"},
-                    {name:"EEWS"} ],
+                    {name:"HALA"},],
 
-                list1:[
-                    {name:"John"},
-                    {name:"George"},
-                    {name:"Paul"},
-                    {name:"Ringo"} ],
+                listOfImages:[
+                    {name: 'device 1', src: require('../assets/alphavite/space.png')},
+                ],
 
-                listItems:[
-                    {name: 'device 1', src: require('../assets/1.png'), width: 10, height: 20},
-                    {name: 'device 2', src: require('../assets/2.jpg'), width: 15, height: 30},
+                listOfImagesAndText:[
+                    {name: 'some text', src: require('../assets/alphavite/space.png')},
                 ],
 
                 enablePut: true,
@@ -74,23 +99,52 @@
 
                 this.imgList[0].src = "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" //splice(0, 1, )
             },
-            draggableOption(groopName){
-                //let option =
-                    return {
-                        sort: true,
+
+            getOption(groupName){
+                return{
                     group:{
-                        name: groopName,
-                        pull: false,
-                        put: this.enablePut
+                        name: groupName,
+                        pull: false,         //отдача
+                        put: this.enablePut  //приём
                     },
-                    animation: 400
+                    animation: 500,
+                    sort: true
                 }
-            }
+
+            },
         },
 
         created(){
             //this.fillImgArray()
         },
+        watch:{
+            listOfImages(){
+                for(let i = 0; i < this.listOfImages.length; i++){
+                    //console.log(this.listOfImages[i].src === undefined)
+                    //console.log(this.listOfImages[i].src)
+                    if(this.listOfImages[i].src === undefined) {this.listOfImages.splice(i, 1)}
+                }
+            },
+            listOfImagesAndText(){
+                for(let i = 0; i < this.listOfImagesAndText.length; i++){
+                    //console.log(this.listOfImages[i].src === undefined)
+                    //console.log(this.listOfImages[i].src)
+                    if(this.listOfImagesAndText[i].src === undefined) {this.listOfImagesAndText.splice(i, 1)}
+                }
+            },
+
+            listOfText(){
+                for(let i = 0; i < this.listOfText.length; i++){
+                    //console.log(this.listOfImages[i].src === undefined)
+                    //console.log(this.listOfImages[i].src)
+                    if(!(this.listOfText[i].src === undefined)) {this.listOfText.splice(i, 1)}
+                }
+            }
+
+
+
+        },
+
         computed:{
             comp1: function () {
               return this.imgList[0].url
@@ -107,6 +161,9 @@
         background-color: #ead2f1;
     }
 
+    .container{
+     padding-top: 0;
+    }
     .box{
         height: 100px;
         width: 100px;

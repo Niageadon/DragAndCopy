@@ -1,5 +1,8 @@
 <template>
-  <v-app >
+  <v-app
+      :dark="darkTheme"
+      :light="!darkTheme"
+  >
 
     <ListOfItems/>
     <ToolBar/>
@@ -18,6 +21,8 @@
 import ListOfItems from "./components/ListOfItems";
 import MainPage from "./components/MainPage";
 import ToolBar from "@/components/Item/ToolBar";
+import { EventBus } from '../src/bus';
+
 //import Simplebar from 'simplebar-vue';
 //import 'simplebar/dist/simplebar.min.css';
 //import VBar from "v-bar";
@@ -34,9 +39,15 @@ export default {
   },
   data () {
     return {
-      //
+      darkTheme: false,
 
     }
+  },
+
+  created() {
+   EventBus.$on('style', data =>{
+     this.darkTheme = data
+    })
   }
 }
 </script>
